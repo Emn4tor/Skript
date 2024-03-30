@@ -17,3 +17,10 @@ on join:
     set line 2 of player's scoreboard to {_@sb.line2}
     set line 3 of player's scoreboard to {_@sb.line3}
     set line 4 of player's scoreboard to {_@sb.line4}
+set line 5 of player's scoreboard to {_@sb.footer} #there is no actual footer 
+
+every 5 seconds: #update vars and animation
+    set line 2 of player's scoreboard to {_@sb.line2} #update the var in case it changes
+    if line 4 of player's scoreboard is {_@sb.line4.1}:
+        set line 4 of player's scoreboard to {_@sb.line4.2}
+    
