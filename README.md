@@ -1,0 +1,2 @@
+# Skript
+All about skript
