@@ -2,25 +2,32 @@
 
 options: #(settings)
 
-sb.title: "&6&lMy super cool Scoreboard"
-sb.line1: "Cool 1st line"
-sb.line2: "var placeholder %{coolvar}%"
-sb.line3: "&7 " #empty line (use colorcodr so the line doesnt get detected as empty and deleted)
-sb.line4: "other placeholder %player%
-sb.line4.1: "animation part 1"
-sb.linr4.2: "animation part 2"
-sb.footer: "play.coolserver.com
+	sb.title: &6&lMy super cool Scoreboard
+	sb.line1: &x&E&B&F&F&0&0C&x&E&F&E&7&0&0o&x&F&3&C&F&0&0o&x&F&7&B&8&0&0l &x&F&B&A&0&0&01&x&F&F&8&8&0&0s&x&F&F&6&F&0&0t &x&F&F&5&6&0&0l&x&F&F&3&C&0&0i&x&F&F&2&3&0&0n&x&F&F&0&A&0&0e
+	sb.line2: &6changing placeholder &e%{coolvar}%
+	sb.line3: &7  #empty line (use colorcode so the line doesnt get detected as empty and deleted)
+	sb.line4: &6static placeholder &e%player%
+	sb.line5.1: &danimation part 1
+	sb.line5.2: &5animation part 2
+	sb.footer: &1play.coolserver.com
+	
 
-on join: 
-    set title of player's scoreboard to {_@sb.title}
-    set line 1 of player's scoreboard to {_@sb.line1}
-    set line 2 of player's scoreboard to {_@sb.line2}
-    set line 3 of player's scoreboard to {_@sb.line3}
-    set line 4 of player's scoreboard to {_@sb.line4}
-set line 5 of player's scoreboard to {_@sb.footer} #there is no actual footer 
+
+
+command /score:
+	trigger: 
+		set title of player's scoreboard to "{@sb.title}"
+		set line 6 of player's scoreboard to " {@sb.line1}"
+		set line 5 of player's scoreboard to " {@sb.line2}"
+		set line 4 of player's scoreboard to "{@sb.line3}" 
+		set line 3 of player's scoreboard to " {@sb.line4}"
+		set line 2 of player's scoreboard to " {@sb.line5.1}"
+		set line 1 of player's scoreboard to "{@sb.footer}" #there is no actual footer 
 
 every 5 seconds: #update vars and animation
-    set line 2 of player's scoreboard to {_@sb.line2} #update the var in case it changes
-    if line 4 of player's scoreboard is {_@sb.line4.1}:
-        set line 4 of player's scoreboard to {_@sb.line4.2}
-    
+	add 1 to {coolvar}
+	loop all players:
+		set line 5 of loop-player's scoreboard to "{@sb.line2}" #update the var in case it changes
+		if line 2 of loop-player's scoreboard is "{@sb.line5.1}":
+			set line 2 of loop-player's scoreboard to "{@sb.line5.2}"
+		
