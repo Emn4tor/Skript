@@ -1,0 +1,16 @@
+#trigger
+
+on join:
+    set {_coolgui} to a new chest inventory with 3 rows named "Welcome Player"
+    set slot 0 of {_coolgui} to diamond sword named "Hellow dear Player" with lore "Welcome on this cool server" #slot 0 is actually the first slot
+    open {_coolgui} to player
+
+on inventory click:
+    name of inventory is "Welcome Player": 
+    if slot is 0:
+        cancel event
+        close player's inventory
+        send "you closed the gui cuz you clicked the sword" to player
+    else:
+        send "succesfully added item to a gui which gets reseted when you reopen it anyway lol" to player
+    
