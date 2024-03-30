@@ -6,11 +6,10 @@ on join:
     open {_coolgui} to player
 
 on inventory click:
-    name of inventory is "Welcome Player": 
-    if slot is 0:
-        cancel event
-        close player's inventory
-        send "you closed the gui cuz you clicked the sword" to player
-    else:
-        send "succesfully added item to a gui which gets reseted when you reopen it anyway lol" to player
-    
+    name of event-inventory is "Welcome Player": 
+        if index of event-slot is 0:
+            cancel event
+            close player's inventory
+            send "you closed the gui cuz you clicked the sword" to player
+        else:
+            send "succesfully added item to a gui which gets reseted when you reopen it anyway lol" to player
